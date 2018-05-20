@@ -1,0 +1,18 @@
+#############################################################################
+# docker
+
+function docker-ps-a() {
+  docker ps -a |  peco |  awk '{ print $1 }'
+}
+
+function docker-images() {
+  docker images |  peco |  awk '{ print $3 }'
+}
+
+alias dcm='docker-compose'
+alias drm='docker rm $(docker-ps-a)'
+alias drmi='docker rmi $(docker-images)'
+
+
+
+

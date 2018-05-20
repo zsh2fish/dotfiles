@@ -1,0 +1,39 @@
+[user]
+    name =
+    email =
+[github]
+    user =
+    token =
+[url "https://"]
+    insteadOf = git://
+[core]
+    excludesfile = ~/.gitignore
+[color]
+    ui = auto
+[alias]
+    cm = commit
+    st = status --short --branch
+    tr = log --oneline --decorate --graph --branches
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lgs = log --stat
+    df = diff --histogram
+    dfc = diff --histogram --cached
+    dfs = diff --name-status
+    dfn = diff --name-only
+    br = branch
+    co = checkout
+    rb = rebase
+    rbi = rebase -i
+    rbc = rebase --continue
+    mr = merge
+    rs = reset
+    rsh = reset --hard
+    sh = show
+    ch = cherry-pick
+    ft = fetch --prune
+    ps = push
+[credential]
+	helper = cache
+[push]
+	default = simple

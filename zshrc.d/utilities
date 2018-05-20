@@ -1,0 +1,77 @@
+###
+# Directory Setttings
+#
+DIRSTACKSIZE=16
+typeset -U path cdpath fpath manpath  # Where to look for autoloaded function definitions
+
+cdpath=(~ ..)
+
+setopt auto_cd auto_pushd pushd_silent pushd_ignore_dups
+#setopt  pushd_minus pushd_to_home
+
+setopt extended_glob
+setopt numeric_glob_sort
+setopt magic_equal_subst
+unsetopt auto_menu
+
+###
+# Input Settings
+#
+export WORDCHARS="*?_-.[]~&;!#$%^(){}<>"
+
+###
+# my functions
+# short find cmd
+function fs() {
+    find $2 -name "$1"
+}
+alias fs='noglob fs'
+
+function cdup() {
+   echo
+   cd ..
+   pwd
+   ls
+   zle reset-prompt
+}
+zle -N cdup
+
+function cdpopd() {
+    echo
+    popd
+    pwd
+    ls
+    zle reset-prompt
+}
+zle -N cdpopd
+
+
+###
+# Alias
+#
+alias rm='nocorrect rm -i'       # no spelling correction on rm
+alias mv='nocorrect mv -i'       # no spelling correction on mv
+alias cp='nocorrect cp -i '      # no spelling correction on cp
+alias mkdir='nocorrect mkdir' # no spelling correction on mkdir
+alias ls='ls -F --color=tty'
+alias ll='ls -l'
+alias lsa='ls -a'
+alias lla="ll -a"
+alias lsd='ls -d'
+alias lld='ll -d'
+alias llh='ll -h'
+alias grep='grep -s -I --exclude="*.svn*" --exclude="*.git*" --exclude="*.cvs*" --exclude="*.hg*" --color=auto'
+alias wget='noglob wget'
+alias yum='noglob yum'
+[ -x /usr/bin/vim ] && alias vi='vim'
+alias less="less -R"
+autoload zmv
+alias zmv='noglob zmv -W'
+
+
+###
+# Key Binding
+#
+bindkey -e
+bindkey "^[j"   cdup
+bindkey "^[l"   cdpopd
